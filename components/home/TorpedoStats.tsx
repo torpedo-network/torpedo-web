@@ -25,8 +25,8 @@ const TorpedoStats = () => {
     );
     // TODO: make these real calculations.
     setStats({
-      cpuFlops: cpuCount * 30,
-      gpuFlops: gpuCount * 30,
+      cpuFlops: cpuCount * 416,
+      gpuFlops: gpuCount * 32,
     });
   };
   useEffect(() => {
@@ -42,16 +42,16 @@ const TorpedoStats = () => {
         </div>
         <div className="flex flex-col justify-center items-center">
           {stats.cpuFlops ? (
-            <p className="text-7xl">{stats.cpuFlops}</p>
+            <p className="text-7xl">~{stats.cpuFlops}</p>
           ) : (
             <PulseLoader />
           )}
 
-          <p>TFLOPs CPU Power Locked</p>
+          <p>GFLOPs CPU Power Locked</p>
         </div>
         <div className="flex flex-col justify-center items-center">
           {stats.gpuFlops ? (
-            <p className="text-7xl">{stats.gpuFlops}</p>
+            <p className="text-7xl">~{stats.gpuFlops}</p>
           ) : (
             <PulseLoader />
           )}

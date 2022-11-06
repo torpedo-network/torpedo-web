@@ -75,8 +75,8 @@ const constructParamsFromConfig = (config: VMConfig) => {
     numGPUs: config.numGPUs,
     gpuType: config.gpuType, // later make this config.gpuType
     totalTime: config.time, // TODO: multiply by 3600
-    serviceType: 2,
-    diskSpace: 1,
+    serviceType: 0, // TODO: make this configurable
+    diskSpace: 1, // TODO: make these also configurable
     RAM: 1, // in seconds
   };
 };

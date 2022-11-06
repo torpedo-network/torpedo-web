@@ -14,7 +14,7 @@ const recommendedConfigs = [
     specs: {
       gpuType: "A100",
       numCPUs: 1,
-      numGPUs: 1,
+      numGPUs: 2,
       time: 4, // hours
     },
     tags: ["language", "model", "training"],
@@ -33,8 +33,8 @@ const recommendedConfigs = [
     name: "Data Science Powerhouse",
     specs: {
       gpuType: "K80",
-      numCPUs: 1,
-      numGPUs: 1,
+      numCPUs: 2,
+      numGPUs: 2,
       time: 4, // hours
     },
     tags: ["data", "analysis", "python", "jupyter"],
