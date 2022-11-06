@@ -100,7 +100,7 @@ export default function RecommendedConfig({
         return {
           numCPUs: [1, Math.max(numCPUs[1], nodeNumCPUs)],
           numGPUs: [1, Math.max(numGPUs[1], nodeNumGPUs)],
-          time: [1, Math.max(time[1], maxDurationHours)],
+          time: [1, Math.max(time[1], Math.floor(maxDurationHours))],
         };
       },
       {
@@ -166,7 +166,7 @@ export default function RecommendedConfig({
           <p>
             Num GPUs:
             <input
-              className="w-16 mx-3"
+              className="w-12 mx-3 border-b-2 border-slate-800 pl-2 focus:outline-none bg-transparent"
               type="number"
               name="numGPUs"
               value={config.numGPUs}
@@ -176,7 +176,7 @@ export default function RecommendedConfig({
           <p>
             Num CPUs:
             <input
-              className="w-16 mx-3"
+              className="w-12 mx-3 border-b-2 border-slate-800 pl-2 focus:outline-none bg-transparent"
               type="number"
               name="numCPUs"
               value={config.numCPUs}
@@ -186,7 +186,7 @@ export default function RecommendedConfig({
           <p>
             Time:{" "}
             <input
-              className="w-16 mx-3"
+              className="w-12 mx-3 border-b-2 border-slate-800 pl-2 focus:outline-none bg-transparent"
               type="number"
               name="time"
               value={config.time}
@@ -196,38 +196,10 @@ export default function RecommendedConfig({
           </p>
         </div>
         <div className="flex flex-col justify-center">
-          <b>VM Features</b>
-          <p>
-            Num GPUs:
-            <input
-              className="w-16 mx-3"
-              type="number"
-              name="numGPUs"
-              value={config.numGPUs}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Num CPUs:
-            <input
-              className="w-16 mx-3"
-              type="number"
-              name="numCPUs"
-              value={config.numCPUs}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Time:{" "}
-            <input
-              className="w-16 mx-3"
-              type="number"
-              name="time"
-              value={config.time}
-              onChange={handleChange}
-            />
-            hour{config.time > 1 ? "s" : ""}
-          </p>
+          <b>Specs</b>
+          <p>RAM: 16GB</p>
+          <p>Storage: 100GB</p>
+          <p>some other metric</p>
         </div>
 
         <div className="col-span-1 flex flex-col justify-center">
