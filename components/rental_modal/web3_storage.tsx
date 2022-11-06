@@ -83,7 +83,7 @@ const Web3StorageComponent = () => {
         </div>
 
         <div className={getStyles() + " transition-[height]"}>
-          <i>
+          <i className="mt-1">
             web3.storage serves as a form of persistent storage for your files
             that you can easily load from your VM.
           </i>
