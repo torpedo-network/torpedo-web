@@ -5,7 +5,7 @@ const IntegrationImage = ({ alt, src }: ImageProps) => {
     <Image
       src={src}
       alt={alt}
-      className="grayscale hover:grayscale-0 transition-all duration-200"
+      className="grayscale hover:grayscale-0 transition-all duration-300"
     />
   );
 };

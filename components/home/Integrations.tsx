@@ -1,7 +1,12 @@
 import umaLogo from "../../assets/integrations/uma.png";
 import filecoin from "../../assets/integrations/filecoin.png";
 import xmtp from "../../assets/integrations/xmtp.png";
-import Image from "next/image";
+import quicknode from "../../assets/integrations/quicknode.png";
+import vast from "../../assets/integrations/vast.png";
+import aws from "../../assets/integrations/aws.png";
+import gcp from "../../assets/integrations/gcp.png";
+import midpoint from "../../assets/integrations/midpoint.png";
+
 import IntegrationImage from "./IntegrationImage";
 
 const Integrations = () => {
@@ -12,12 +17,27 @@ const Integrations = () => {
           <h1 className="text-5xl mb-5">Integrations</h1>
           <p>Our product works with a web3-native stack.</p>
         </div>
-        <div className="md:grid-cols-3 md:grid gap-20">
+        <div className="md:grid-cols-3 grid-cols-2 md:grid gap-x-36 gap-y-20 w-1/2 mx-auto">
           <div className="flex flex-col justify-center items-center">
-            <IntegrationImage src={umaLogo} alt="Uma logo" />
+            <IntegrationImage src={aws} alt="AWS logo" />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <IntegrationImage src={gcp} alt="GCP logo" />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <IntegrationImage src={vast} alt="Vast.ai logo" />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <IntegrationImage src={midpoint} alt="Midpoint logo" />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <IntegrationImage src={quicknode} alt="Quicknode logo" />
           </div>
           <div className="flex flex-col justify-center items-center">
             <IntegrationImage src={filecoin} alt="Filecoin logo" />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <IntegrationImage src={xmtp} alt="XMTP logo" />
           </div>
           <div className="flex flex-col justify-center items-center">
             <IntegrationImage src={xmtp} alt="XMTP logo" />
