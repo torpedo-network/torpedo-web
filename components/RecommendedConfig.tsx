@@ -193,7 +193,7 @@ export default function RecommendedConfig({
           <b>Specs</b>
           <p>RAM: 16GB</p>
           <p>Storage: 100GB</p>
-          <p>some other metric</p>
+          <p>Web3.Storage enabled</p>
         </div>
 
         <div className="col-span-1 flex flex-col justify-center">
