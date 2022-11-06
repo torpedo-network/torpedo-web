@@ -1,4 +1,3 @@
-import umaLogo from "../../assets/integrations/uma.png";
 import filecoin from "../../assets/integrations/filecoin.png";
 import xmtp from "../../assets/integrations/xmtp.png";
 import quicknode from "../../assets/integrations/quicknode.png";
@@ -35,9 +34,6 @@ const Integrations = () => {
           </div>
           <div className="flex flex-col justify-center items-center">
             <IntegrationImage src={filecoin} alt="Filecoin logo" />
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <IntegrationImage src={xmtp} alt="XMTP logo" />
           </div>
           <div className="flex flex-col justify-center items-center">
             <IntegrationImage src={xmtp} alt="XMTP logo" />
