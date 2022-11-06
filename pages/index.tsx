@@ -7,6 +7,13 @@ import TorpedoStats from "../components/home/TorpedoStats";
 import Torpedo from "../components/Torpedo";
 
 export default function Home() {
+  const scrollDown = () => {
+    window.scrollTo({
+      top: 700,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <AppLayout>
       <Head>
@@ -42,12 +49,12 @@ export default function Home() {
               >
                 rent
               </Link>
-              <Link
-                href="/about"
+              <button
+                onClick={scrollDown}
                 className="border-2 bg-red-500/30 hover:bg-red-500/60 border-red-500 text-white text-xl px-5 py-3 rounded-lg mt-7 ml-10"
               >
                 about
-              </Link>
+              </button>
             </div>
           </div>
           <div className="-z-50 inline-block md:w-1/2 absolute h-screen md:-translate-x-40 sm:-translate-x-96 -translate-x-64 w-3/4 -translate-y-40">
