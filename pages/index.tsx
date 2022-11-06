@@ -12,7 +12,7 @@ export default function Home() {
       <Head>
         <title>Home | Torpedo</title>
       </Head>
-      <div className="py-36">
+      <div className="md:py-36 py-10">
         <div className="container mx-auto px-4">
           <div className="inline-block">
             <h1 className="text-7xl font-bold text-white">
@@ -50,7 +50,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="-z-50 inline-block w-1/2 absolute h-screen -translate-x-40 -translate-y-40">
+          <div className="-z-50 inline-block md:w-1/2 absolute h-screen md:-translate-x-40 sm:-translate-x-96 -translate-x-64 w-3/4 -translate-y-40">
             <Torpedo />
           </div>
         </div>

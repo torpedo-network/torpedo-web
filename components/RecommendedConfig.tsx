@@ -123,7 +123,7 @@ export default function RecommendedConfig({
   return (
     <>
       <RentalModal open={isOpen} setIsOpen={setIsOpen} config={config} />
-      <div className="border-2 border-black px-10 py-10 rounded-lg bg-white/50 shadow-lg grid grid-cols-4 gap-4">
+      <div className="border-2 border-black px-10 py-10 rounded-lg bg-white/50 shadow-lg grid md:grid-cols-4 gap-4">
         <div className="">
           <h1 className="font-bold text-2xl">{title}</h1>
           <p>Recommended configuration</p>

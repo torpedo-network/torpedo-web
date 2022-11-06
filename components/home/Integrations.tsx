@@ -17,7 +17,7 @@ const Integrations = () => {
           <h1 className="text-5xl mb-5">Integrations</h1>
           <p>Our product works with a web3-native stack.</p>
         </div>
-        <div className="md:grid-cols-3 grid-cols-2 md:grid gap-x-36 gap-y-20 w-1/2 mx-auto">
+        <div className="sm:grid-cols-3 grid-cols-2 grid md:gap-x-36 md:gap-y-20 gap-x-5 gap-y-5 md:w-1/2 mx-auto">
           <div className="flex flex-col justify-center items-center">
             <IntegrationImage src={aws} alt="AWS logo" />
           </div>

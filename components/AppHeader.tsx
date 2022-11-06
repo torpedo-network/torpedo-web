@@ -61,31 +61,37 @@ export default function AppHeader() {
   };
   const getLinkStyles = (path: string) => {
     const active = router.pathname === path ? "border-b-2" : "";
-    return "text-white text-2xl " + active;
+    return "text-white text-xl " + active;
   };
 
   return (
-    <div className="mx-auto px-8 py-4 flex justify-between content-center">
+    <div className="mx-auto px-8 py-4 sm:flex justify-between content-center">
       <div className="flex flex-col justify-center">
         <Link href="/">
           <Image src={torpedoLogo} alt="Torpedo logo" height={50} />
         </Link>
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="sm:flex flex-col justify-center hidden">
         <h3>
           <Link className={getLinkStyles("/app")} href="/app">
             rent
           </Link>
         </h3>
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="sm:flex flex-col justify-center hidden">
         <h3>
           <Link className={getLinkStyles("/provider")} href="/provider">
             become a provider
           </Link>
         </h3>
       </div>
-      <div className="inline-block float-right">
+      {/* <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div> */}
+
+      <div className="sm:inline-block sm:float-right hidden">
         {signer ? (
           <Menu>
             <Menu.Button className="border-2 border-slate-500 py-4 px-8 rounded-full bg-slate-800/50 flex">

@@ -36,7 +36,7 @@ const TorpedoStats = () => {
 
   return (
     <div className="py-12 bg-[#16161d]">
-      <div className="md:grid-cols-3 md:grid text-white container mx-auto">
+      <div className="sm:grid-cols-3 sm:grid text-white container mx-auto">
         <div className="flex flex-col justify-center items-center">
           <p>BY THE NUMBERS</p>
         </div>
