@@ -37,7 +37,9 @@ export default function RentalModal({
   setIsOpen: (open: boolean) => void;
 }) {
   const [loading, setLoading] = useState(true);
-  const [transactionConfirmed, setTransactionConfirmed] = useState(false);
+  // TODO: change this back to false.
+  const [transactionConfirmed, setTransactionConfirmed] = useState(true);
+  const [notebookUrl, setNotebookUrl] = useState("");
   const [loadingStates, setLoadingStates] = useState({
     connectClient: "initial",
     createSession: "initial",
@@ -82,8 +84,9 @@ export default function RentalModal({
       setLoadingStates((s) => ({ ...s, startSession: "finished" }));
       const content = await startSession(sessionContract, xmtp);
       setLoadingStates((s) => ({ ...s, startSession: "finished" }));
-      // TODO: do something with the URL returned from content.
-      console.log(content);
+
+      setNotebookUrl(content);
+      window.open(content, "_blank");
     } catch (err) {
       console.error(err);
       toast("Failed to confirm transaction. Please try again. ", {
@@ -125,7 +128,7 @@ export default function RentalModal({
     <Dialog
       open={open}
       onClose={() => {
-        if (!transactionLoading) {
+        if (!transactionConfirmed) {
           setIsOpen(false);
         }
       }}
@@ -134,12 +137,15 @@ export default function RentalModal({
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="mx-auto max-w-sm rounded bg-white px-10 py-10">
+        <Dialog.Panel className="mx-auto max-w-sm rounded bg-white px-10 py-10 w-96">
           {transactionConfirmed ? (
             <div>
               <Dialog.Title className="font-bold text-2xl pb-5">
-                Order Confirmed
+                Transaction Confirmed
               </Dialog.Title>
+              <Dialog.Description>
+                <p>Confirm the remaining prompts to initialize your VM:</p>
+              </Dialog.Description>
 
               <div>
                 <TimedProgressBar
@@ -166,6 +172,17 @@ export default function RentalModal({
                   started={loadingStates.startSession === "started"}
                   finished={loadingStates.startSession === "finished"}
                 />
+              </div>
+              <div className="mt-5">
+                <h1 className="text-xl font-bold">All Set!</h1>
+                <a
+                  href={notebookUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-blue-500 underline"
+                >
+                  Open Jupyter Notebook in VM
+                </a>
               </div>
             </div>
           ) : (
@@ -202,7 +219,7 @@ export default function RentalModal({
                 <button
                   onClick={() => setIsOpen(false)}
                   className="mt-5 px-5 py-3 bg-slate-500/30 border-slate-500 border-2 rounded-xl float-right inline-block mr-3"
-                  disabled={transactionLoading}
+                  disabled={transactionConfirmed}
                 >
                   Cancel
                 </button>

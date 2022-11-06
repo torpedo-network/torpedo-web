@@ -26,12 +26,11 @@ const TimedProgressBar = ({
 
   useEffect(() => {
     if (finished) {
-      console.log("Finished");
+      // move progress bar to 100%.
       clearInterval(intervalId);
       setTimeout(() => {
         setProgress(1);
-      }, 500); // move progress bar to 100%.
-      // return () => clearTimeout(id);
+      }, 500);
     } else if (started) {
       const increment = 0.05 / timeEstimate;
       const id = setInterval(() => {
@@ -45,20 +44,14 @@ const TimedProgressBar = ({
   }, [started, finished, timeEstimate]);
 
   useEffect(() => {
-    // if (finished) {
-    //   if (progress >= 1) {
-    //     clearInterval(intervalId);
-    //   }
-    // } else {
     if (progress >= optimalProgress) {
       clearInterval(intervalId);
     }
-    // }
   }, [progress, intervalId, finished]);
 
   return (
     <div>
-      <div className="flex justify-between mb-1">
+      <div className="flex justify-between mb-1 mt-5">
         <span className="text-base font-medium text-blue-700 dark:text-white">
           {label}
         </span>
