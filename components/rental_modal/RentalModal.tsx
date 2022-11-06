@@ -90,6 +90,7 @@ export default function RentalModal({
       window.open(content, "_blank");
     } catch (err) {
       console.error(err);
+      setTransactionConfirmed(false);
       toast("Failed to confirm transaction. Please try again. ", {
         type: "error",
       });
