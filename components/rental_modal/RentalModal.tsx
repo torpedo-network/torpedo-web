@@ -103,7 +103,7 @@ export default function RentalModal({
       .then((isValid) => {
         if (!isValid) {
           toast(
-            "We couldn't find a Phaestus node to satisfy that request. Try again with different specifications.",
+            "We couldn't find a Torpedo node to satisfy that request. Try again with different specifications.",
             {
               type: "error",
             }
