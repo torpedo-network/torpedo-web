@@ -90,10 +90,10 @@ const RecommendedConfigView = ({
 }) => {
   return (
     <>
-      {filteredConfigs.map((config, i) => {
+      {filteredConfigs.map((config) => {
         return (
           <RecommendedConfig
-            key={i}
+            key={config.name}
             title={config.name}
             initialConfig={{
               ...config.specs,

@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { ContractContext } from "../generated-types/TorpedoFactory";
 import torpedoAbi from "./hooks/abi";
 import { useAppContext } from "./AppContext";
-import RentalModal from "./RentalModal";
+import RentalModal from "./rental_modal/RentalModal";
 import { useTorpedo } from "./hooks/useTorpedo";
 
 // TODO: use a graph to select VM panumCPUseters
@@ -129,7 +129,7 @@ export default function RecommendedConfig({
   return (
     <>
       <RentalModal open={isOpen} setIsOpen={setIsOpen} config={config} />
-      <div className="border-2 border-black px-10 py-10 rounded-lg bg-white/50 shadow-lg grid grid-cols-3 gap-4">
+      <div className="border-2 border-black px-10 py-10 rounded-lg bg-white/50 shadow-lg grid grid-cols-4 gap-4">
         <div className="">
           <h1 className="font-bold text-2xl">{title}</h1>
           <p>Recommended configuration</p>
@@ -195,13 +195,47 @@ export default function RecommendedConfig({
             hour{config.time > 1 ? "s" : ""}
           </p>
         </div>
+        <div className="flex flex-col justify-center">
+          <b>VM Features</b>
+          <p>
+            Num GPUs:
+            <input
+              className="w-16 mx-3"
+              type="number"
+              name="numGPUs"
+              value={config.numGPUs}
+              onChange={handleChange}
+            />
+          </p>
+          <p>
+            Num CPUs:
+            <input
+              className="w-16 mx-3"
+              type="number"
+              name="numCPUs"
+              value={config.numCPUs}
+              onChange={handleChange}
+            />
+          </p>
+          <p>
+            Time:{" "}
+            <input
+              className="w-16 mx-3"
+              type="number"
+              name="time"
+              value={config.time}
+              onChange={handleChange}
+            />
+            hour{config.time > 1 ? "s" : ""}
+          </p>
+        </div>
 
         <div className="col-span-1 flex flex-col justify-center">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="border-blue-500 bg-blue-500/30 hover:bg-blue-500/70 text-slate-700 border-2 py-2 px-4 text-xl rounded transition-all w-3/4"
             onClick={() => launchRentalModal()}
           >
-            Configure and Launch
+            launch
           </button>
         </div>
       </div>

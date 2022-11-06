@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useAppContext } from "./AppContext";
-import torpedoAbi from "./hooks/abi";
 
 export default function AppHeader() {
   const { setAddress, setSigner, signer, address, setProvider } =
@@ -37,8 +37,17 @@ export default function AppHeader() {
 
       setSigner(provider.getSigner());
       setAddress(await provider.getSigner().getAddress());
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      if (error.message.includes("missing provider")) {
+        toast(
+          "Wallet not found. Please install MetaMask to use this feature.",
+          {
+            type: "error",
+          }
+        );
+      } else {
+        console.log(error);
+      }
     }
   };
 
@@ -56,10 +65,10 @@ export default function AppHeader() {
   };
 
   return (
-    <div className="mx-auto px-4 py-4 flex justify-between content-center">
-      <div>
+    <div className="mx-auto px-8 py-4 flex justify-between content-center">
+      <div className="flex flex-col justify-center">
         <Link href="/">
-          <Image src={torpedoLogo} alt="Torpedo logo" />
+          <Image src={torpedoLogo} alt="Torpedo logo" height={50} />
         </Link>
       </div>
       <div className="flex flex-col justify-center">
