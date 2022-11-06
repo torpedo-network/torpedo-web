@@ -1,13 +1,7 @@
-import { BigNumber, ethers } from "ethers";
-import Router from "next/router";
+import { BigNumber } from "ethers";
 import { ChangeEvent, useEffect, useState } from "react";
-import { ContractContext } from "../generated-types/TorpedoFactory";
-import torpedoAbi from "./hooks/abi";
-import { useAppContext } from "./AppContext";
 import RentalModal from "./rental_modal/RentalModal";
 import { useTorpedo } from "./hooks/useTorpedo";
-
-// TODO: use a graph to select VM panumCPUseters
 
 export interface VMConfig {
   numCPUs: number;

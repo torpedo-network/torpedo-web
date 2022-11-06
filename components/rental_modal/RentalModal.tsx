@@ -37,8 +37,7 @@ export default function RentalModal({
   setIsOpen: (open: boolean) => void;
 }) {
   const [loading, setLoading] = useState(true);
-  // TODO: change this back to false.
-  const [transactionConfirmed, setTransactionConfirmed] = useState(true);
+  const [transactionConfirmed, setTransactionConfirmed] = useState(false);
   const [notebookUrl, setNotebookUrl] = useState("");
   const [loadingStates, setLoadingStates] = useState({
     connectClient: "initial",

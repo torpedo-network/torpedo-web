@@ -1,17 +1,17 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { torpedoAddress } from "../../config/torpedo_config";
 import torpedoAbi from "../hooks/abi";
 import PulseLoader from "../widgets/PulseLoader";
 
 const TorpedoStats = () => {
-  const torpedoAddress = process.env.NEXT_PUBLIC_TORPEDO_ADDRESS;
   const [stats, setStats] = useState({
     cpuFlops: 0,
     gpuFlops: 0,
   });
   const loadTorpedoStats = async () => {
     const provider = ethers.getDefaultProvider("goerli");
-    const torpedo = new ethers.Contract(torpedoAddress!, torpedoAbi, provider);
+    const torpedo = new ethers.Contract(torpedoAddress, torpedoAbi, provider);
     const phaestusNodes = await torpedo.viewAllPhaestus();
     console.log(phaestusNodes);
     // TODO: use time somehow
