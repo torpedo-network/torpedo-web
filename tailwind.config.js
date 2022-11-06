@@ -10,6 +10,12 @@ module.exports = {
       sans: ["Lato", "sans-serif"],
       heading: ["Inter", "sans-serif"],
     },
+    extend: {
+      transitionProperty: {
+        height: 'height'
+      }
+    }
+
   },
   plugins: [],
 }

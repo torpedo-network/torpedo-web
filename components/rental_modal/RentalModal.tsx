@@ -17,6 +17,7 @@ import {
   waitForVMToStart,
 } from "./rental_functions";
 import TimedProgressBar from "./TimedProgressBar";
+import Web3Storage from "./web3_storage";
 
 // TODO: bundle all transactions into a single permissions request.
 // TODO: update to include RAM and storage selectors.
@@ -196,11 +197,18 @@ export default function RentalModal({
                 Complete your order
               </Dialog.Title>
 
-              <Dialog.Description>
-                Quote: GPU: {getName(config.gpuType)}. {config.numCPUs} CPUs,{" "}
-                {config.numGPUs} GPUs. Duration: {config.time} hours. You are
-                paying {loading ? "..." : price} USD.
-              </Dialog.Description>
+              <h3 className="text-lg font-bold">Quote</h3>
+              <p>
+                GPU: {getName(config.gpuType)}. {config.numCPUs} CPU
+                {config.numCPUs === 1 ? "" : "s"}, {config.numGPUs} GPU
+                {config.numGPUs === 1 ? "" : "s"}.{" "}
+              </p>
+
+              <p>Duration: {config.time} hours. </p>
+              <p>
+                You are paying <b>{loading ? "..." : price} USD.</b>
+              </p>
+              <Web3Storage />
               <div>
                 <button
                   onClick={
