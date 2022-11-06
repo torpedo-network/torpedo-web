@@ -142,6 +142,49 @@ const torpedoSessionAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "getSessionRequest",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "enum TorpedoFactory.gpuType",
+        name: "",
+        type: "uint8",
+      },
+      {
+        internalType: "enum TorpedoFactory.serviceType",
+        name: "",
+        type: "uint8",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "string",
