@@ -42,10 +42,12 @@ const waitForVMToStart = async (sessionContract: Contract) => {
     console.log(status);
   }
   console.log(status);
+  console.log(sessionContract.address);
   return status;
 };
 
 const startSession = async (sessionContract: Contract, xmtp: Client) => {
+  await new Promise((r) => setTimeout(r, 2000));
   await sessionContract.startSession();
   const conversations = await xmtp.conversations.list();
   console.log(conversations);

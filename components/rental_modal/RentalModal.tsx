@@ -81,7 +81,7 @@ export default function RentalModal({
       setLoadingStates((s) => ({ ...s, waitForVM: "finished" }));
 
       console.log("starting session");
-      setLoadingStates((s) => ({ ...s, startSession: "finished" }));
+      setLoadingStates((s) => ({ ...s, startSession: "started" }));
       const content = await startSession(sessionContract, xmtp);
       setLoadingStates((s) => ({ ...s, startSession: "finished" }));
 
