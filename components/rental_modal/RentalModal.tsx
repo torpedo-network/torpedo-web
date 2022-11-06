@@ -12,6 +12,7 @@ import { Client } from "@xmtp/xmtp-js";
 import {
   constructParamsFromConfig,
   createSession,
+  getName,
   startSession,
   waitForVMToStart,
 } from "./rental_functions";
@@ -155,7 +156,7 @@ export default function RentalModal({
                 />
                 <TimedProgressBar
                   label="Creating session"
-                  timeEstimate={20}
+                  timeEstimate={35}
                   started={loadingStates.createSession === "started"}
                   finished={loadingStates.createSession === "finished"}
                 />
@@ -172,17 +173,22 @@ export default function RentalModal({
                   finished={loadingStates.startSession === "finished"}
                 />
               </div>
-              <div className="mt-5">
-                <h1 className="text-xl font-bold">All Set!</h1>
-                <a
-                  href={notebookUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-blue-500 underline"
-                >
-                  Open Jupyter Notebook in VM
-                </a>
-              </div>
+
+              {notebookUrl ? (
+                <div className="mt-5">
+                  <h1 className="text-xl font-bold">All Set!</h1>
+                  <a
+                    href={notebookUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    Open Jupyter Notebook in VM
+                  </a>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           ) : (
             <>
@@ -191,9 +197,9 @@ export default function RentalModal({
               </Dialog.Title>
 
               <Dialog.Description>
-                Quote: {config.numCPUs} CPUs, {config.numGPUs} GPUs. Duration:{" "}
-                {config.time} hours. You are paying {loading ? "..." : price}{" "}
-                USD.
+                Quote: GPU: {getName(config.gpuType)}. {config.numCPUs} CPUs,{" "}
+                {config.numGPUs} GPUs. Duration: {config.time} hours. You are
+                paying {loading ? "..." : price} USD.
               </Dialog.Description>
               <div>
                 <button

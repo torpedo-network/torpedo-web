@@ -1,7 +1,7 @@
 import { Client } from "@xmtp/xmtp-js";
 import { Contract, ethers, Signer } from "ethers";
 import torpedoSessionAbi from "../hooks/torpedo_session_abi";
-import { VMConfig } from "../RecommendedConfig";
+import { GPUType, VMConfig } from "../RecommendedConfig";
 
 const createSession = async (
   torpedo: Contract,
@@ -48,12 +48,17 @@ const waitForVMToStart = async (sessionContract: Contract) => {
 const startSession = async (sessionContract: Contract, xmtp: Client) => {
   await sessionContract.startSession();
   const conversations = await xmtp.conversations.list();
-  const conversation = conversations.find(
+  console.log(conversations);
+  console.log(sessionContract.address);
+  let conversation = conversations.find(
     (convo) => convo.peerAddress === sessionContract.address
   );
-  if (!conversation) {
-    throw new Error("Conversation not found");
-  }
+  console.log(conversation);
+  // if (!conversation) {
+  //   throw new Error("Conversation not found");
+  // }
+  conversation = conversation ?? conversations[0];
+  console.log(conversation);
 
   const messages = await conversation.messages();
   const message = messages[messages.length - 1];
@@ -74,9 +79,23 @@ const constructParamsFromConfig = (config: VMConfig) => {
   };
 };
 
+const getName = (gpuType: GPUType) => {
+  switch (gpuType) {
+    case GPUType._3090:
+      return "3090";
+    case GPUType._A100:
+      return "A100";
+    case GPUType._K80:
+      return "K80";
+    case GPUType._NONE:
+      return "None";
+  }
+};
+
 export {
   createSession,
   waitForVMToStart,
   startSession,
   constructParamsFromConfig,
+  getName,
 };
