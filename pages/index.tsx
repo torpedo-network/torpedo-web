@@ -44,17 +44,17 @@ export default function Home() {
             </p>
             <div className="mt-10">
               <Link
-                className="border-2 border-blue-500 hover:bg-blue-500/60 bg-blue-500/30 text-white text-xl px-5 py-3 rounded-lg mt-7"
+                className="border-2 border-blue-500 hover:bg-blue-500/60 bg-blue-500/30 text-white text-xl px-5 py-3 rounded-lg mt-7 transition-colors"
                 href="/app"
               >
                 rent
               </Link>
-              <button
+              <a
                 onClick={scrollDown}
-                className="border-2 bg-red-500/30 hover:bg-red-500/60 border-red-500 text-white text-xl px-5 py-3 rounded-lg mt-7 ml-10"
+                className="border-2 bg-red-500/30 hover:bg-red-500/60 border-red-500 text-white text-xl px-5 py-3 rounded-lg mt-7 ml-10 transition-colors"
               >
                 about
-              </button>
+              </a>
             </div>
           </div>
           <div className="-z-50 inline-block md:w-1/2 absolute h-screen md:-translate-x-40 sm:-translate-x-96 -translate-x-64 w-3/4 -translate-y-40">
