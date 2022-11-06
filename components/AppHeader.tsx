@@ -61,7 +61,9 @@ export default function AppHeader() {
   };
   const getLinkStyles = (path: string) => {
     const active = router.pathname === path ? "border-b-2" : "";
-    return "text-white text-xl " + active;
+    return (
+      "text-white text-xl hover:text-slate-300 transition-colors " + active
+    );
   };
 
   return (
