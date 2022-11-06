@@ -1,3 +1,3 @@
-const torpedoAddress = "0x5F326E95F041860422404bFbD1f3a6AD7FD14B82";
+const torpedoAddress = "0x27E9678557070faa7183EDB137BEA1BF94090cA8";
 
 export { torpedoAddress };
