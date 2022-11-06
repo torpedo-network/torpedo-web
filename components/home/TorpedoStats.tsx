@@ -31,6 +31,7 @@ const TorpedoStats = () => {
   };
   useEffect(() => {
     loadTorpedoStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

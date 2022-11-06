@@ -58,7 +58,7 @@ export default function RentalModal({
         const { address } = res.events[0];
         // const address = "0xe1CEBc768ad81A7aCb99C1590d08EC751AE27375";
         console.log(address);
-        const contract = new ethers.Contract(
+        const sessionContract = new ethers.Contract(
           address,
           torpedoSessionAbi,
           signer
@@ -66,34 +66,32 @@ export default function RentalModal({
 
         // TODO: create a new dialog panel for the progress bar, noting that the transaction was successful
 
-        let status = await contract.status();
+        let status = await sessionContract.status();
         console.log(status);
         while (status != 1) {
           await new Promise((r) => setTimeout(r, 1000));
-          status = await contract.status();
+          status = await sessionContract.status();
           console.log(status);
         }
         console.log(status);
 
         // get the URL
 
-        const txn = await contract.startSession();
+        const txn = await sessionContract.startSession();
         console.log(txn);
 
         const conversations = await xtmp.conversations.list();
         for (const conversation of conversations) {
-          console.log(
-            `New conversation started with ${conversation.peerAddress}`
-          );
-          const messages = await conversation.messages();
-          console.log(messages);
-          const message = messages[messages.length - 1];
-          const { content } = message;
-          console.log(content);
-        }
+          if (conversation.peerAddress === address) {
+            const messages = await conversation.messages();
+            const message = messages[messages.length - 1];
+            const { content } = message;
 
-        // const payload = await txn.wait();
-        // console.log(payload);
+            // We succeeded!
+
+            console.log(content);
+          }
+        }
       }
     } catch (err) {
       console.error(err);

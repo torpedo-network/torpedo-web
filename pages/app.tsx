@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { useAppContext } from "../components/AppContext";
 import AppLayout from "../components/AppLayout";
 import RecommendedConfig, { GPUType } from "../components/RecommendedConfig";
-import recommendedConfigs from "./recommended_configs";
+import recommendedConfigs from "../components/data/recommended_configs";
 
 export default function App() {
   const [filteredConfigs, setFilteredConfigs] = useState(recommendedConfigs);

@@ -42,6 +42,7 @@ export default function RecommendedConfig({
   // Update ranges on startup.
   useEffect(() => {
     updateRanges(initialConfig);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
