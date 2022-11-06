@@ -151,7 +151,7 @@ export default function RentalModal({
 
               <div>
                 <TimedProgressBar
-                  label="Create chat client"
+                  label="Initializing XMTP connection"
                   timeEstimate={5}
                   started={loadingStates.connectClient === "started"}
                   finished={loadingStates.connectClient === "finished"}
