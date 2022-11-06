@@ -47,9 +47,9 @@ const Web3StorageComponent = () => {
 
   const getStyles = () => {
     if (isOpen) {
-      return "overflow-hidden h-56";
+      return "overflow-hidden max-h-screen";
     } else {
-      return "h-0 overflow-hidden";
+      return "max-h-0 overflow-hidden";
     }
   };
 
@@ -57,7 +57,7 @@ const Web3StorageComponent = () => {
     <div className="mt-8">
       <div className="border-2 border-slate-200 px-4 py-4 rounded-lg">
         <div className="flex" onClick={() => toggleOpen()}>
-          <h1 className="text-md font-bold cursor-pointer">
+          <h1 className="text-sm font-bold cursor-pointer">
             Upload Files to Web3.Storage (optional)
           </h1>
           <div
@@ -82,11 +82,12 @@ const Web3StorageComponent = () => {
           </div>
         </div>
 
-        <div className={getStyles() + " transition-[height]"}>
-          <i className="mt-1">
+        <div className={getStyles() + " transition-all"}>
+          <div className="mt-4"></div>
+          <p>
             web3.storage serves as a form of persistent storage for your files
             that you can easily load from your VM.
-          </i>
+          </p>
           <div className="mt-4 mb-2">
             <input
               type="text"

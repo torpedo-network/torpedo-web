@@ -51,7 +51,7 @@ export default function Home() {
               </Link>
               <a
                 onClick={scrollDown}
-                className="border-2 bg-red-500/30 hover:bg-red-500/60 border-red-500 text-white text-xl px-5 py-3 rounded-lg mt-7 ml-10 transition-colors"
+                className="border-2 bg-red-500/30 hover:bg-red-500/60 border-red-500 text-white text-xl px-5 py-3 rounded-lg mt-7 ml-10 transition-colors cursor-pointer"
               >
                 about
               </a>
