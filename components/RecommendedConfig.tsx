@@ -2,6 +2,7 @@ import { BigNumber } from "ethers";
 import { ChangeEvent, useEffect, useState } from "react";
 import RentalModal from "./rental_modal/RentalModal";
 import { useTorpedo } from "./hooks/useTorpedo";
+import { toast } from "react-toastify";
 
 export interface VMConfig {
   numCPUs: number;
@@ -59,52 +60,57 @@ export default function RecommendedConfig({
   const updateRanges = async (newConfig: VMConfig) => {
     if (!torpedo.provider) return;
     console.log("Updated ranges");
-    const phaestusNodes = await torpedo.viewAllPhaestus();
-    const now = await torpedo.getNow();
+    try {
+      const phaestusNodes = await torpedo.viewAllPhaestus();
+      const now = await torpedo.getNow();
 
-    const matchingNodes = phaestusNodes
-      .map((node: any) => {
-        const { numCPUs, numGPUs, gpuType, endTime, phaestusAddress } = node;
-        return {
-          numCPUs,
-          numGPUs,
-          gpuType,
-          endTime: (endTime as BigNumber).toNumber(),
-          maxDurationHours: ((endTime as BigNumber).toNumber() - now) / 3600,
-          phaestusAddress,
-        };
-      })
-      .filter((node: any) => {
-        return (
-          node.numCPUs >= newConfig.numCPUs &&
-          node.numGPUs >= newConfig.numGPUs &&
-          node.gpuType == newConfig.gpuType &&
-          node.maxDurationHours >= newConfig.time
-        );
-      });
+      const matchingNodes = phaestusNodes
+        .map((node: any) => {
+          const { numCPUs, numGPUs, gpuType, endTime, phaestusAddress } = node;
+          return {
+            numCPUs,
+            numGPUs,
+            gpuType,
+            endTime: (endTime as BigNumber).toNumber(),
+            maxDurationHours: ((endTime as BigNumber).toNumber() - now) / 3600,
+            phaestusAddress,
+          };
+        })
+        .filter((node: any) => {
+          return (
+            node.numCPUs >= newConfig.numCPUs &&
+            node.numGPUs >= newConfig.numGPUs &&
+            node.gpuType == newConfig.gpuType &&
+            node.maxDurationHours >= newConfig.time
+          );
+        });
 
-    // update ranges in state based on the filtered list
-    const newRanges = matchingNodes.reduce(
-      ({ numCPUs, numGPUs, time }: any, node: any) => {
-        const {
-          numCPUs: nodeNumCPUs,
-          numGPUs: nodeNumGPUs,
-          maxDurationHours,
-        } = node;
-        return {
-          numCPUs: [1, Math.max(numCPUs[1], nodeNumCPUs)],
-          numGPUs: [1, Math.max(numGPUs[1], nodeNumGPUs)],
-          time: [1, Math.max(time[1], Math.floor(maxDurationHours))],
-        };
-      },
-      {
-        numCPUs: [1, 1],
-        numGPUs: [1, 1],
-        time: [1, 1],
-      }
-    );
+      // update ranges in state based on the filtered list
+      const newRanges = matchingNodes.reduce(
+        ({ numCPUs, numGPUs, time }: any, node: any) => {
+          const {
+            numCPUs: nodeNumCPUs,
+            numGPUs: nodeNumGPUs,
+            maxDurationHours,
+          } = node;
+          return {
+            numCPUs: [1, Math.max(numCPUs[1], nodeNumCPUs)],
+            numGPUs: [1, Math.max(numGPUs[1], nodeNumGPUs)],
+            time: [1, Math.max(time[1], Math.floor(maxDurationHours))],
+          };
+        },
+        {
+          numCPUs: [1, 1],
+          numGPUs: [1, 1],
+          time: [1, 1],
+        }
+      );
 
-    setRanges(newRanges);
+      setRanges(newRanges);
+    } catch (error) {
+      toast("Error fetching Torpedo nodes", { type: "error" });
+      console.log(error);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -158,24 +164,24 @@ export default function RecommendedConfig({
         <div className="flex flex-col justify-center">
           <b>VM Features</b>
           <p>
-            Num GPUs:
-            <input
+            Num GPUs: {config.numGPUs}
+            {/* <input
               className="w-12 mx-3 border-b-2 border-slate-800 pl-2 focus:outline-none bg-transparent"
               type="number"
               name="numGPUs"
               value={config.numGPUs}
               onChange={handleChange}
-            />
+            /> */}
           </p>
           <p>
-            Num CPUs:
-            <input
+            Num CPUs: {config.numCPUs}
+            {/* <input
               className="w-12 mx-3 border-b-2 border-slate-800 pl-2 focus:outline-none bg-transparent"
               type="number"
               name="numCPUs"
               value={config.numCPUs}
               onChange={handleChange}
-            />
+            /> */}
           </p>
           <p>
             Time:{" "}
@@ -193,7 +199,8 @@ export default function RecommendedConfig({
           <b>Specs</b>
           <p>RAM: 16GB</p>
           <p>Storage: 100GB</p>
-          <p>Web3.Storage enabled</p>
+          <p>Provider: GCP</p>
+          {/* <p>Web3.Storage enabled</p> */}
         </div>
 
         <div className="col-span-1 flex flex-col justify-center">

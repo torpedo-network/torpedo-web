@@ -76,7 +76,7 @@ export default function AppHeader() {
       <div className="sm:flex flex-col justify-center hidden">
         <h3>
           <Link className={getLinkStyles("/app")} href="/app">
-            rent
+            rent a VM
           </Link>
         </h3>
       </div>
@@ -84,6 +84,13 @@ export default function AppHeader() {
         <h3>
           <Link className={getLinkStyles("/provider")} href="/provider">
             become a provider
+          </Link>
+        </h3>
+      </div>
+      <div className="sm:flex flex-col justify-center hidden">
+        <h3>
+          <Link className={getLinkStyles("/trial")} href="/trial">
+            try it out
           </Link>
         </h3>
       </div>

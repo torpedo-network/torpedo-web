@@ -1,43 +1,43 @@
 const recommendedConfigs = [
   {
-    name: "Stable Diffusion",
+    name: "Data Analytics",
     specs: {
-      gpuType: "3090",
-      numCPUs: 1,
-      numGPUs: 1,
+      gpuType: "none",
+      numCPUs: 2,
+      numGPUs: 0,
       time: 4, // hours
     },
-    tags: ["stable", "diffusion", "art"],
+    tags: ["data", "analytics", "science", "python", "jupyter"],
   },
   {
-    name: "Language Model Training",
+    name: "ML Experiments",
     specs: {
       gpuType: "A100",
       numCPUs: 1,
       numGPUs: 2,
       time: 4, // hours
     },
-    tags: ["language", "model", "training"],
+    tags: ["machine", "learning", "experiments", "ML", "python", "jupyter"],
   },
   {
-    name: "Data Science Experiments",
+    name: "Deep Learning Experiments",
     specs: {
-      gpuType: "none",
+      gpuType: "3090",
       numCPUs: 1,
       numGPUs: 1,
       time: 4, // hours
     },
-    tags: ["data", "analysis", "python", "jupyter"],
+    tags: ["deep", "learning", "python", "jupyter", "experiments"],
   },
   {
-    name: "Data Science Powerhouse",
+    name: "Deep Learning Powerhouse",
     specs: {
       gpuType: "K80",
       numCPUs: 2,
       numGPUs: 2,
       time: 4, // hours
     },
-    tags: ["data", "analysis", "python", "jupyter"],
+    tags: ["deep", "learning", "python", "jupyter", "powerhouse"],
   },
   {
     name: "Custom",
