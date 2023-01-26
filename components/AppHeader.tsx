@@ -76,7 +76,7 @@ export default function AppHeader() {
       <div className="sm:flex flex-col justify-center hidden">
         <h3>
           <Link className={getLinkStyles("/app")} href="/app">
-            rent
+            rent a VM
           </Link>
         </h3>
       </div>
