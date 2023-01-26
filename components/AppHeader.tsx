@@ -87,6 +87,13 @@ export default function AppHeader() {
           </Link>
         </h3>
       </div>
+      <div className="sm:flex flex-col justify-center hidden">
+        <h3>
+          <Link className={getLinkStyles("/trial")} href="/trial">
+            try it out
+          </Link>
+        </h3>
+      </div>
       {/* <div></div>
       <div></div>
       <div></div>
