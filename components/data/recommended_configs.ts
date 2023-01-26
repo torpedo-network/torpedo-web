@@ -2,7 +2,7 @@ const recommendedConfigs = [
   {
     name: "Data Analytics",
     specs: {
-      gpuType: "NONE",
+      gpuType: "none",
       numCPUs: 2,
       numGPUs: 0,
       time: 4, // hours
@@ -22,7 +22,7 @@ const recommendedConfigs = [
   {
     name: "Deep Learning Experiments",
     specs: {
-      gpuType: "none",
+      gpuType: "3090",
       numCPUs: 1,
       numGPUs: 1,
       time: 4, // hours
