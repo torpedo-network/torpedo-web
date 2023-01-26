@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AppLayout from "../components/AppLayout";
 
-export default function Home() {
+export default function Provider() {
   return (
     <AppLayout>
       <Head>
