@@ -52,6 +52,10 @@ export default function App() {
           </div> */}
 
             <div className="grid grid-flow-row gap-5 py-10 px-10">
+              <div className="bg-blue-500/30 text-blue-500 text-xl px-5 py-3 rounded-lg mt-7 mb-3 transition-colors">
+                We are in the process of upgrading our systems, so some features
+                may be unavailable. New version coming soon!
+              </div>
               <div className="border-2 border-black px-10 py-10 rounded-lg bg-white/10 shadow-lg flex">
                 <svg
                   className="inline"
